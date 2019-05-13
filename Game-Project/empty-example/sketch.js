@@ -4,11 +4,10 @@ createCanvas(600, 600);
 }
 
 
-function target (x,y){
+function draw (){
   background(52, 173, 60);
-  target(mousex, mouseY);
+  target(mouseX, mouseY);
   arrow();
-
 
 }
 
