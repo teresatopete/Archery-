@@ -1,5 +1,6 @@
 let x;
 let y;
+let direction=1;
 
 function setup(){
 createCanvas(600, 600);
@@ -13,10 +14,12 @@ y=0;
 function draw (){
   background(239, 141, 103);
   target(x, y);
-  x=x+3.5;
-  y=y+3.5;
-  //arrow();
-
+  // x=x+3.5;
+  // y=y+3.5;
+  x=x+5.5*direction;
+    y=y+5.5*direction;
+    if (x>width-2)
+      direction =-1;
 }
 
 function target(x,y){
