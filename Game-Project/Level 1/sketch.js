@@ -15,19 +15,13 @@ function draw (){
   x=x+2*direction;
   y=y+2*direction;
   if (x>width-2){
-    direction =-1;
+    direction = direction* -1;
   }
-
-  x<x+0*direction;{
-  y<y+0*direction;
-  if (x>width-2){
-    direction =-1;
+  if (x<2){
+    direction = direction* -1;
 
   }
 
-
-
-  }
   //arrow();
 
 }
