@@ -1,5 +1,7 @@
 
 //create a variable to hold your avatar
+
+//create a variable to hold your avatar
 let me;
 let r;
 let g;
@@ -20,6 +22,7 @@ function setup() {
 
   //make one avatar called me
   me = new Avatar(0, 0, 10);
+  arrow = new Arrow(0,0,10);
 
 }
 
@@ -52,6 +55,15 @@ function keyPressed() {
 }
 
 class Arrow {
+  drawArrow(){
+
+          line(this.x+80,this.y+30,this.x,this.y+30)
+      }
+      constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
+    		    this.x = x;
+        		this.y = y;
+            this.speed = speed;
+    	}
 
 
 }
@@ -63,9 +75,6 @@ class Avatar {
         this.speed = speed;
 	}
 
-  drawArrow(){
-        line(this.x+80,this.y+30,this.x,this.y+30)
-  }
 
 	drawMe(){
         // strokeWeight(3);
@@ -137,4 +146,3 @@ if (me.y = 0){
 
  }
 }
-
