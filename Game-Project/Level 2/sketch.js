@@ -1,25 +1,35 @@
 let x;
 let y;
 let direction=1;
+let textSize;
+
 
 function setup(){
-createCanvas(600, 600);
+createCanvas(1200, 1200);
 x=0;
 y=0;
 
 }
 
 
-
 function draw (){
   background(239, 141, 103);
+  textSize(32);
+  text('Archery Simulation', 10, 30);
+  fill(0, 102, 153);
+  text('Archery Simulation', 10, 60);
+  fill(0, 102, 153, 51);
+  text('Archery Simulation', 10, 90);'Archery Simulation' displayed 3 times going from black, blue to translucent blue
   target(x, y);
-  // x=x+3.5;
-  // y=y+3.5;
   x=x+5.5*direction;
     y=y+5.5*direction;
-    if (x>width-2)
-      direction =-1;
+    if (x>width-2){
+      direction = direction* -1;
+    }
+    if (x<2){
+        direction = direction* -1;
+}
+
 }
 
 function target(x,y){

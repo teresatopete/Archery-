@@ -1,64 +1,66 @@
 let x;
 let y;
 let direction=1;
+let t;
+
 
 function setup(){
-createCanvas(600, 600);
+createCanvas(800, 800);
 x=0;
 y=0;
-}
+t = new Target(x, y); //make a new ball from the Ball class and call it b.
 
+}
 
 function draw (){
   background(52, 173, 60);
-  target(x, y);
-  x=x+2*direction;
-  y=y+2*direction;
-  if (x>width-2){
-    direction =-1;
+    t.drawTarget(); //draw the ball called b (go look in the Ball class for the drawBall function)
+    t.moveTarget(); //move the ball called b (go look in the Ball class for the moveBall function)
+    textSize(45);{
+    text('Archery Simulation', width/2, height/2);
+    fill("red");
+    text('Archery Simulation', width/2, height/2);
+    fill(255, 255, 255);
+    text('Archery Simulation', width/2, height/2);
   }
-
-  x<x+0*direction;{
-  y<y+0*direction;
-  if (x>width-2){
-    direction =-1;
-
-  }
-
-
-
-  }
-  //arrow();
-
 }
 
-function target(x,y){
-  ellipse(x, y, 195, 195);
-  fill(0, 0, 0)
-  ellipse(x, y, 175, 175);
-  fill(0, 0, 0)
-  stroke(255, 255, 255)
-  ellipse(x, y, 155, 145);
-  fill("blue")
-  ellipse(x, y, 135, 125);
-  fill("blue")
-  ellipse(x, y, 115, 105);
-  fill("red")
-  ellipse(x, y, 95, 95);
-  fill("red")
-  ellipse(x, y, 75, 75);
-  fill(238, 242, 0)
-  ellipse(x, y, 55, 55);
-  fill(238, 242, 0)
-  ellipse(x, y, 35, 35);
-  fill(255, 255, 255);
+class Target{
+  	constructor(x,y){ //every ball needs an x value and a y value
+  		    this.x = x;
+      		this.y = y;
+        }
+  	drawTarget(){  // draw a ball on the screen at x,y
+      ellipse(this.x, this.y, 195, 195);
+      fill(0, 0, 0)
+      ellipse(this.x, this.y, 175, 175);
+      fill(0, 0, 0)
+      stroke(255, 255, 255)
+      ellipse(this.x, this.y, 155, 145);
+      fill("blue")
+      ellipse(this.x, this.y, 135, 125);
+      fill("blue")
+      ellipse(this.x, this.y, 115, 105);
+      fill("red")
+      ellipse(this.x, this.y, 95, 95);
+      fill("red")
+      ellipse(this.x, this.y, 75, 75);
+      fill(238, 242, 0)
+      ellipse(this.x, this.y, 55, 55);
+      fill(238, 242, 0)
+      ellipse(this.x, this.y, 35, 35);
+      fill(255, 255, 255);
+   }
+  	moveTarget(){ //update the location of the ball, so it moves across the screen
+      this.x=this.x+2*direction;
+        this.y=this.y+2*direction;
+        if (this.x>width-2){
+          direction = direction* -1;
+        }
+        if (this.x<2){
+            direction = direction* -1;
+  	    }
+
+  }
 
 }
-
-//function arrow(){
-//stroke(0, 0, 0)
-//line(300, 300, 307, 312);
-//line(300, 300, 293, 398);
-//line(300, 300, 293, 312);
-//stroke(0, 0, 0)
-//}
