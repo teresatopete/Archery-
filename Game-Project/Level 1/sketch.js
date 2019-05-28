@@ -17,11 +17,11 @@ function draw (){
     t.drawTarget(); //draw the ball called b (go look in the Ball class for the drawBall function)
     t.moveTarget(); //move the ball called b (go look in the Ball class for the moveBall function)
     textSize(45);{
-    text('Archery Simulation', width/2, height/2);
+    text('Archery Simulation', 200, 400);
     fill("red");
-    text('Archery Simulation', width/2, height/2);
+    text('Archery Simulation', 200, 425);
     fill(255, 255, 255);
-    text('Archery Simulation', width/2, height/2);
+    text('Archery Simulation', 200, 450);
   }
 }
 
@@ -52,8 +52,8 @@ class Target{
       fill(255, 255, 255);
    }
   	moveTarget(){ //update the location of the ball, so it moves across the screen
-      this.x=this.x+2*direction;
-        this.y=this.y+2*direction;
+      this.x=this.x+4*direction;
+        this.y=this.y+4*direction;
         if (this.x>width-2){
           direction = direction* -1;
         }
