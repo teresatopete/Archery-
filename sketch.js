@@ -8,6 +8,7 @@ let g;
 let b;
 let bow;
 let arrow = [];
+let a;
 
 function preload() {
   bow = loadImage('bowandarrow.png')
@@ -33,27 +34,43 @@ function draw (){
   background(52, 173, 60);
     t.drawTarget(); //draw the ball called b (go look in the Ball class for the drawBall function)
     t.moveTarget(); //move the ball called b (go look in the Ball class for the moveBall function)
+     fill(52, 173, 60)
+       noStroke();
+        ellipse(0, 0, 195, 195);
+      fill(52, 173, 60)
+      noStroke();
+          ellipse(200, 200, 195, 195);
+        fill(52, 173, 60)
+        noStroke();
+            ellipse(400, 400, 195, 195);
+    textSize(35);{
+    fill("red")
+    text('Game Console', 450, 60)
+    fill("blue")
+    text('w = Move Up', 470, 100)
+    text('s = Move Down', 440, 140)
+    text('q+space = Shoot Arrow', 410, 180)
+    }
     textSize(45);{
-    text('Archery Simulation', width/2, height/2);
+      text('Archery Simulation', 200, 400);
     fill("red");
-    text('Archery Simulation', width/2, height/2);
-    fill(255, 255, 255);
-    text('Archery Simulation', width/2, height/2);
+    text('Archery Simulation', 200, 425);
+    fill(255,  255, 255);
+    text('Archery Simulation', 200, 450);
   }
-  angleMode(DEGREES); // Change the mode to DEGREES
-    let a = atan2(mouseY - height / 2, mouseX - width / 2);
+  angleMode(DEGREES); // qq qChange the mode to DEGREES
+   a = atan2(mouseY - height / 2, mouseX - width / 2);
     translate(width / 2, height / 2);
     push();
     rotate(a);
-    image(bow,this.x,this.y,100,100)
-    me.drawMe();
-    me.moveMe();
-    for (let i = 0; i < arrow.length; i++) {
-        arrow[i].drawArrow();
-        arrow[i].moveArrow();
-
-      }
-
+    ellipse(this.x,this.y,50);
+        me.moveMe();
+        me.drawMe();
+        for (let i = 0; i < arrow.length; i++) {
+          arrow[i].drawArrow();
+          arrow[i].moveArrow();
+          arrow[i].targetHit();
+    }
     pop();
 
 
@@ -67,7 +84,7 @@ function keyPressed() {
 
     let  b = new Arrow(me.x, me.y, 10, false);
     arrow.push(b);
-    console.log(arrow);
+
   }
 
   if (keyCode === 32){
@@ -83,29 +100,29 @@ class Target{
       		this.y = y;
         }
   	drawTarget(){  // draw a ball on the screen at x,y
-      ellipse(this.x, this.y, 195, 195);
-      fill(0, 0, 0)
       ellipse(this.x, this.y, 175, 175);
       fill(0, 0, 0)
+      ellipse(this.x, this.y, 155, 155);
+      fill(0, 0, 0)
       stroke(255, 255, 255)
-      ellipse(this.x, this.y, 155, 145);
+      ellipse(this.x, this.y, 135, 135);
       fill("blue")
-      ellipse(this.x, this.y, 135, 125);
+      ellipse(this.x, this.y, 115, 115);
       fill("blue")
-      ellipse(this.x, this.y, 115, 105);
-      fill("red")
       ellipse(this.x, this.y, 95, 95);
       fill("red")
       ellipse(this.x, this.y, 75, 75);
+      fill("red")
+      ellipse(this.x, this.y, 50, 50);
       fill(238, 242, 0)
-      ellipse(this.x, this.y, 55, 55);
+      ellipse(this.x, this.y, 25, 25);
       fill(238, 242, 0)
-      ellipse(this.x, this.y, 35, 35);
+      ellipse(this.x, this.y, 5, 5);
       fill(255, 255, 255);
    }
   	moveTarget(){ //update the location of the ball, so it moves across the screen
-      this.x=this.x+2*direction;
-        this.y=this.y+2*direction;
+      this.x=this.x+15*direction;
+        this.y=this.y+15*direction;
         if (this.x>width-2){
           direction = direction* -1;
         }
@@ -126,7 +143,7 @@ class Arrow {
   }
 
   drawArrow(){
-
+    stroke(0)
           line(this.x+80,this.y+30,this.x,this.y+30)
       }
 
@@ -137,11 +154,15 @@ class Arrow {
     }
     if (this.shot == true){
       this.x=this.x+10;
-      print("arrow is shot");
+     print(this.y+30);
+     print(a);
     }
 
   }
-  shootArrow(){
+  targetHit(){
+    if(this.x>=width/2 && this.x<= width){
+      print("target hit");
+    }
 
   }
 
@@ -157,15 +178,7 @@ class Avatar {
 
 
 	drawMe(){
-        // strokeWeight(3);
-    		// fill("blue");
-		    // ellipse(this.x,this.y,20,20);
-        // line(this.x,this.y, this.x, this.y+40);
-        // line(this.x, this.y+40, this.x-20, this.y+60);
-        // line(this.x, this.y+40, this.x+10, this.y+50);
-        // line(this.x+10, this.y+50, this.x+5, this.y+60);
-        // line(this.x, this.y+15, this.x-10, this.y+25);
-        // line(this.x-10, this.y+25, this.x+10, this.y+35);
+        stroke(0)
         ellipse(this.x,this.y,50);
         line(this.x,this.y+25,this.x,this.y+80)
         line(this.x,this.y+40,this.x+70,this.y+35)
